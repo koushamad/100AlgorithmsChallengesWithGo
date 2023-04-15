@@ -1,6 +1,6 @@
 package ElementarySorts
 
-// MergeSort NlogN
+// MergeSort NlogN Stable
 type mergeSort struct {
 	List []int
 	tmp  []int
