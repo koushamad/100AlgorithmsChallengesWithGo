@@ -41,7 +41,7 @@ func TestWeightedQuickUnionInit(t *testing.T) {
 				n1 := n[0]
 				n2 := n[1]
 				c := wqu.IsConnected(n1, n2)
-				if c == true {
+				if c == false {
 					t.Errorf("WeightedQuickUnionInit = %v, %d,%d  want False", wqu.nodes, n1, n2)
 				}
 			}

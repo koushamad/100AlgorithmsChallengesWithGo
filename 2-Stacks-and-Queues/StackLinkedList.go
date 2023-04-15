@@ -1,5 +1,7 @@
 package main
 
+import "golang.org/x/exp/constraints"
+
 type StackLinkedList struct {
 	linkList *LinkedList
 }
@@ -10,7 +12,7 @@ func NewStackLinkedList() *StackLinkedList {
 	}
 }
 
-func InitStackLinkedList(nodeData []int) *StackLinkedList {
+func InitStackLinkedList[ordered constraints.Ordered](nodeData []ordered) *StackLinkedList {
 	s := NewStackLinkedList()
 	for _, data := range nodeData {
 		s.linkList.Add(NewLinkedListNode(data))

@@ -1,7 +1,9 @@
 package main
 
+import "golang.org/x/exp/constraints"
+
 type LinkedListNode struct {
-	data int
+	data interface{}
 	next *LinkedListNode
 }
 
@@ -17,7 +19,7 @@ func NewLinkedList() *LinkedList {
 	}
 }
 
-func NewLinkedListNode(data int) *LinkedListNode {
+func NewLinkedListNode[ordered constraints.Ordered](data ordered) *LinkedListNode {
 	return &LinkedListNode{
 		data: data,
 		next: nil,
@@ -35,9 +37,9 @@ func InitLinkedList(nodes []*LinkedListNode) *LinkedList {
 }
 
 func (ll *LinkedList) Add(n *LinkedListNode) {
-	second := ll.head
+	head := ll.head
 	ll.head = n
-	ll.head.next = second
+	ll.head.next = head
 	ll.length++
 }
 

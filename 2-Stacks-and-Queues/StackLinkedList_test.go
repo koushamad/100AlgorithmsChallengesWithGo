@@ -43,7 +43,7 @@ func TestInitStackLinkedList(t *testing.T) {
 
 			for _, item := range tt.pop {
 				if got := s.Pup(); got.data != item {
-					t.Errorf("Pup() = %v, want %v", got, item)
+					t.Errorf("Pup() = %v, want %v", got.data, item)
 				}
 			}
 
