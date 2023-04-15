@@ -1,6 +1,6 @@
 package ElementarySorts
 
-// QuickSort ~NLogN Not Stable
+// QuickSort3Way ~2NLogN Not Stable Best For Duplicate Lists
 type quickSort3Way struct {
 	List []int
 }

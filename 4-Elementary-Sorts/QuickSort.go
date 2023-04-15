@@ -1,6 +1,6 @@
 package ElementarySorts
 
-// QuickSort ~NLogN Not Stable
+// QuickSort ~2NLogN Not Stable
 type quickSort struct {
 	List []int
 }
