@@ -1,4 +1,4 @@
-package main
+package ConnectionUnion
 
 // WeightedQuickUnion init N; union Log N ^ 2; Find Log N
 type WeightedQuickUnion struct {

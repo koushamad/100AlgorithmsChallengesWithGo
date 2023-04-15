@@ -1,10 +1,10 @@
-package main
+package ConnectionUnion
 
 import (
 	"testing"
 )
 
-func TestWeightedQuickUnionInit(t *testing.T) {
+func TestQuickUnionInit(t *testing.T) {
 	type args struct {
 		nodes       int
 		connections [][]int
@@ -27,22 +27,22 @@ func TestWeightedQuickUnionInit(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			wqu := WeightedQuickUnionInit(tt.args.nodes, tt.args.connections)
+			qu := QuickUnionInit(tt.args.nodes, tt.args.connections)
 			for _, n := range tt.success {
 				n1 := n[0]
 				n2 := n[1]
-				c := wqu.IsConnected(n1, n2)
+				c := qu.IsConnected(n1, n2)
 				if c != true {
-					t.Errorf("WeightedQuickUnionInit = %v, %d,%d  want True", wqu.nodes, n1, n2)
+					t.Errorf("QuickUnion = %v, %d,%d  want True", qu.nodes, n1, n2)
 				}
 			}
 
 			for _, n := range tt.failed {
 				n1 := n[0]
 				n2 := n[1]
-				c := wqu.IsConnected(n1, n2)
-				if c == false {
-					t.Errorf("WeightedQuickUnionInit = %v, %d,%d  want False", wqu.nodes, n1, n2)
+				c := qu.IsConnected(n1, n2)
+				if c == true {
+					t.Errorf("QuickUnion = %v, %d,%d  want False", qu.nodes, n1, n2)
 				}
 			}
 		})

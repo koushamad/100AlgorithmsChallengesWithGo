@@ -1,4 +1,4 @@
-package main
+package ConnectionUnion
 
 // QuickUnion init N; union N ^ 2; Find N
 type QuickUnion struct {

@@ -1,4 +1,4 @@
-package main
+package ConnectionUnion
 
 // QuickFind init N; union N*N; Find 1
 type QuickFind struct {

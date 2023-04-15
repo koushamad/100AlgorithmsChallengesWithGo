@@ -1,4 +1,4 @@
-package main
+package DataStructure
 
 import (
 	"testing"
@@ -6,7 +6,7 @@ import (
 
 func TestInitLinkedList(t *testing.T) {
 	type args struct {
-		nodes []*LinkedListNode
+		nodes []*LinkedListNode[int]
 	}
 	type gets struct {
 		index int
@@ -15,7 +15,7 @@ func TestInitLinkedList(t *testing.T) {
 	var tests = []struct {
 		name   string
 		args   args
-		add    []*LinkedListNode
+		add    []*LinkedListNode[int]
 		delete []int
 		next   []int
 		get    []gets
@@ -24,17 +24,17 @@ func TestInitLinkedList(t *testing.T) {
 		{
 			name: "Case 1",
 			args: args{
-				nodes: []*LinkedListNode{
-					NewLinkedListNode(1),
-					NewLinkedListNode(2),
-					NewLinkedListNode(3),
-					NewLinkedListNode(4),
-					NewLinkedListNode(5),
+				nodes: []*LinkedListNode[int]{
+					NewLinkedListNode[int](1),
+					NewLinkedListNode[int](2),
+					NewLinkedListNode[int](3),
+					NewLinkedListNode[int](4),
+					NewLinkedListNode[int](5),
 				},
 			},
-			add: []*LinkedListNode{
-				NewLinkedListNode(6),
-				NewLinkedListNode(7),
+			add: []*LinkedListNode[int]{
+				NewLinkedListNode[int](6),
+				NewLinkedListNode[int](7),
 			},
 			delete: []int{6, 5},
 			next:   []int{7, 4},
@@ -57,7 +57,7 @@ func TestInitLinkedList(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ll := InitLinkedList(tt.args.nodes)
+			ll := InitLinkedList[int](tt.args.nodes)
 
 			for _, data := range tt.add {
 				ll.Add(data)
@@ -69,23 +69,23 @@ func TestInitLinkedList(t *testing.T) {
 
 			for _, data := range tt.next {
 				node := ll.Next()
-				if node.data != data {
-					t.Errorf("Delete() = %v, want %v", node.data, data)
+				if node.Data != data {
+					t.Errorf("Delete() = %v, want %v", node.Data, data)
 				}
 			}
 
 			for _, item := range tt.get {
 				node := ll.Get(item.index)
-				if node.data != item.data {
-					t.Errorf("Get() = %v, want %v", node.data, item.data)
+				if node.Data != item.data {
+					t.Errorf("Get() = %v, want %v", node.Data, item.data)
 				}
 			}
 
 			allNodes := ll.GetAll()
 
 			for i, item := range tt.getAll {
-				if allNodes[i].data != item {
-					t.Errorf("GetAll() = %v, want %v", allNodes[i].data, item)
+				if allNodes[i].Data != item {
+					t.Errorf("GetAll() = %v, want %v", allNodes[i].Data, item)
 				}
 			}
 		})
