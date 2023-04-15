@@ -5,9 +5,9 @@ func InsertionSort[ordered Ordered](list []ordered, callback OrderedCallback[ord
 	lenList := len(list)
 
 	for i := 0; i < lenList; i++ {
-		for j := 0; j <= i; j++ {
-			if callback(list[i], list[j]) {
-				list[i], list[j] = list[j], list[i]
+		for j := i; j > 0; j-- {
+			if callback(list[j], list[j-1]) {
+				list[j], list[j-1] = list[j-1], list[j]
 			} else {
 				break
 			}
