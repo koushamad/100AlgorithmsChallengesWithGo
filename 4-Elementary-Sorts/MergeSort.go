@@ -7,16 +7,12 @@ type mergeSort struct {
 }
 
 func MergeSort(list []int) []int {
-	m := NewMergeSort(list)
-	m.sort(0, len(list)-1)
-	return m.List
-}
-
-func NewMergeSort(list []int) *mergeSort {
-	return &mergeSort{
+	m := &mergeSort{
 		List: list,
 		tmp:  make([]int, len(list)),
 	}
+	m.sort(0, len(list)-1)
+	return m.List
 }
 
 func (m *mergeSort) sort(low, hig int) {
