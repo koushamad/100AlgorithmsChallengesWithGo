@@ -30,3 +30,14 @@ func (s *StackLinkedList) Push(item *ListItem) {
 func (s *StackLinkedList) Pup() *ListItem {
 	return s.linkList.Next().Data
 }
+
+func (s *StackLinkedList) Contain(item *ListItem) bool {
+	head := s.linkList.Head
+	for head != nil {
+		if head.Data.Value == item.Value {
+			return true
+		}
+		head = head.Next
+	}
+	return false
+}
