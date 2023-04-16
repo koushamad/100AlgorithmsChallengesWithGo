@@ -1,5 +1,6 @@
 package DataStructure
 
+// BinaryTreeNode LogN
 type BinaryTreeNode struct {
 	Item   *ListItem
 	Left   *BinaryTreeNode
