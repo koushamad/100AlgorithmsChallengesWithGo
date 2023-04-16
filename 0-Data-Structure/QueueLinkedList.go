@@ -10,10 +10,10 @@ func NewQueueLinkedList() *QueueLinkedList {
 	}
 }
 
-func InitQueueLinkedList(nodes []*LinkedListTwoNode) *QueueLinkedList {
+func InitQueueLinkedList(items []*ListItem) *QueueLinkedList {
 	q := NewQueueLinkedList()
-	for _, node := range nodes {
-		q.Enqueue(node)
+	for _, item := range items {
+		q.Enqueue(item)
 	}
 
 	return q
@@ -23,10 +23,12 @@ func (q *QueueLinkedList) IsEmpty() bool {
 	return q.LinkedList.IsEmpty()
 }
 
-func (q *QueueLinkedList) Enqueue(node *LinkedListTwoNode) {
+func (q *QueueLinkedList) Enqueue(item *ListItem) {
+	node := NewLinkedListTwoNode(item)
 	q.LinkedList.AddToHead(node)
 }
 
-func (q *QueueLinkedList) Dequeue() *LinkedListTwoNode {
-	return q.LinkedList.Previous()
+func (q *QueueLinkedList) Dequeue() *ListItem {
+	node := q.LinkedList.Previous()
+	return node.Data
 }

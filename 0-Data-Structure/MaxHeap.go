@@ -1,6 +1,10 @@
 package DataStructure
 
-import "strconv"
+import (
+	"fmt"
+	"github.com/xlab/treeprint"
+	"strconv"
+)
 
 type HeapItem struct {
 	order int
@@ -34,7 +38,7 @@ func NewHeapItem(index int, data string) HeapItem {
 func NewMaxHeap(capacity int) *MaxHeap {
 	return &MaxHeap{
 		array:    make([]HeapItem, capacity),
-		pointer:  0,
+		pointer:  -1,
 		capacity: capacity,
 	}
 }
@@ -56,12 +60,12 @@ func (h *MaxHeap) Extract() *HeapItem {
 
 	extracted := h.array[0]
 	h.array[0] = h.array[h.pointer]
-	h.pointer--
 
 	if h.pointer < (h.capacity / 3) {
 		h.resize(h.capacity / 2)
 	}
 
+	h.pointer--
 	h.maxHeapIfyDown(0)
 
 	return &extracted
@@ -142,4 +146,62 @@ func (h *MaxHeap) left(index int) int {
 // right
 func (h *MaxHeap) right(index int) int {
 	return 2*index + 2
+}
+
+func (h *MaxHeap) Print() {
+	tree := treeprint.New()
+
+	h.toTree(tree, 0)
+
+	fmt.Println(tree.String())
+}
+
+func (h *MaxHeap) toTree(tree treeprint.Tree, index int) {
+	if index > h.pointer {
+		return
+	}
+
+	value, left, right := h.getParentsChildValues(index)
+
+	if index == 0 {
+		if left != "" || right != "" {
+			tree = tree.AddBranch(value)
+		} else {
+			tree = tree.AddNode(value)
+		}
+	}
+
+	if left != "" {
+		leftTree := tree
+		if h.left(h.left(index)) > h.pointer {
+			leftTree = leftTree.AddNode(left)
+		} else {
+			leftTree = tree.AddBranch(left)
+		}
+		h.toTree(leftTree, h.left(index))
+	}
+	if right != "" {
+		rightTree := tree
+		if h.left(h.right(index)) > h.pointer {
+			rightTree = rightTree.AddNode(right)
+		} else {
+			rightTree = tree.AddBranch(right)
+		}
+		h.toTree(rightTree, h.right(index))
+	}
+}
+
+func (h *MaxHeap) getParentsChildValues(index int) (string, string, string) {
+	value, left, right := "", "", ""
+	if index <= h.pointer {
+		value = h.array[index].data
+	}
+	if h.left(index) <= h.pointer {
+		left = h.array[h.left(index)].data
+	}
+	if h.right(index) <= h.pointer {
+		right = h.array[h.right(index)].data
+	}
+
+	return value, left, right
 }

@@ -10,10 +10,10 @@ func NewStackLinkedList() *StackLinkedList {
 	}
 }
 
-func InitStackLinkedList(nodeData []string) *StackLinkedList {
+func InitStackLinkedList(listItems []string) *StackLinkedList {
 	s := NewStackLinkedList()
-	for _, data := range nodeData {
-		s.linkList.Add(NewLinkedListNode(data))
+	for _, item := range listItems {
+		s.linkList.Add(NewLinkedListNode(NewListItem(item)))
 	}
 
 	return s
@@ -23,10 +23,10 @@ func (s *StackLinkedList) IsEmpty() bool {
 	return s.linkList.IsEmpty()
 }
 
-func (s *StackLinkedList) Push(node *LinkedListNode) {
-	s.linkList.Add(node)
+func (s *StackLinkedList) Push(item *ListItem) {
+	s.linkList.Add(NewLinkedListNode(item))
 }
 
-func (s *StackLinkedList) Pup() *LinkedListNode {
-	return s.linkList.Next()
+func (s *StackLinkedList) Pup() *ListItem {
+	return s.linkList.Next().Data
 }

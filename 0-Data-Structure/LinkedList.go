@@ -1,7 +1,7 @@
 package DataStructure
 
 type LinkedListNode struct {
-	Data string
+	Data *ListItem
 	Next *LinkedListNode
 }
 
@@ -17,7 +17,7 @@ func NewLinkedList() *LinkedList {
 	}
 }
 
-func NewLinkedListNode(data string) *LinkedListNode {
+func NewLinkedListNode(data *ListItem) *LinkedListNode {
 	return &LinkedListNode{
 		Data: data,
 		Next: nil,
