@@ -45,8 +45,8 @@ func Test_outerTrees(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := outerTrees(tt.args.points); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("outerTrees() = %v, want %v", got, tt.want)
+			if got := solution(tt.args.points); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("solution() = %v, want %v", got, tt.want)
 			}
 		})
 	}

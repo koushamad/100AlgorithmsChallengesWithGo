@@ -21,11 +21,7 @@ func (pt Points) Less(a, b int) bool {
 	return pt[a].Y < pt[b].Y
 }
 
-func Ccw(a, b, c Point) int {
-	return (b.X-a.X)*(c.Y-a.Y) - (c.X-a.X)*(b.Y-a.Y)
-}
-
-func outerTrees(points []Point) []Point {
+func solution(points []Point) []Point {
 
 	if points == nil || len(points) < 3 {
 		return points
@@ -66,4 +62,8 @@ func outerTrees(points []Point) []Point {
 
 	}
 	return rst
+}
+
+func Ccw(a, b, c Point) int {
+	return (b.X-a.X)*(c.Y-a.Y) - (c.X-a.X)*(b.Y-a.Y)
 }

@@ -1,33 +1,29 @@
-package SelectedElements
+package PerfectCity
 
 import "testing"
 
 func Test_solution(t *testing.T) {
 	type args struct {
-		arr []int
-		p   int
-		q   int
-		r   int
+		dep []float64
+		des []float64
 	}
 	tests := []struct {
 		name string
 		args args
-		want int
+		want float64
 	}{
 		{
 			name: "Case 1",
 			args: args{
-				arr: []int{3, 1, 0, 5, 1, 6, 5, -1, -100},
-				p:   1,
-				q:   1,
-				r:   1,
+				dep: []float64{0.4, 1},
+				des: []float64{0.9, 3},
 			},
-			want: -96,
+			want: 2.7,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := solution(tt.args.arr, tt.args.p, tt.args.q, tt.args.r); got != tt.want {
+			if got := solution(tt.args.dep, tt.args.des); got != tt.want {
 				t.Errorf("solution() = %v, want %v", got, tt.want)
 			}
 		})

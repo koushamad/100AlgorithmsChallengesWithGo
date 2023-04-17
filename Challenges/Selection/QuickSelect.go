@@ -1,6 +1,6 @@
 package Selection
 
-func FindKthLargest(nums []int, k int) int {
+func solution(nums []int, k int) int {
 	return doFindKthLargest(nums, k, 0, len(nums)-1)
 }
 

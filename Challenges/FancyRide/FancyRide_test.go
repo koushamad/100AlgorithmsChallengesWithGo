@@ -1,33 +1,29 @@
-package SelectedElements
+package FancyRide
 
 import "testing"
 
 func Test_solution(t *testing.T) {
 	type args struct {
-		arr []int
-		p   int
-		q   int
-		r   int
+		l     int
+		fares []float64
 	}
 	tests := []struct {
 		name string
 		args args
-		want int
+		want string
 	}{
 		{
 			name: "Case 1",
 			args: args{
-				arr: []int{3, 1, 0, 5, 1, 6, 5, -1, -100},
-				p:   1,
-				q:   1,
-				r:   1,
+				l:     30,
+				fares: []float64{0.3, 0.5, 0.7, 1, 1.3},
 			},
-			want: -96,
+			want: "UberXI",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := solution(tt.args.arr, tt.args.p, tt.args.q, tt.args.r); got != tt.want {
+			if got := solution(tt.args.l, tt.args.fares); got != tt.want {
 				t.Errorf("solution() = %v, want %v", got, tt.want)
 			}
 		})

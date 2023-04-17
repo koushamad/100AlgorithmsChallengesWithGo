@@ -15,7 +15,7 @@ package MagicalString
 //Here we can replace 2nd character with 'a'. Resultant string will be "aaaab" and here maximum length of magical substring is 4 ("aaaa")
 
 // O(N)
-func maxMagicalSubstring(s string, k int) int {
+func solution(s string, k int) int {
 	charCount := make([]int, 26)
 	maxLength := 0
 	n := len(s)

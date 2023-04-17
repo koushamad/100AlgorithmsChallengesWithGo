@@ -39,8 +39,8 @@ func TestFindKthLargest(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := FindKthLargest(tt.args.nums, tt.args.k); got != tt.want {
-				t.Errorf("FindKthLargest() = %v, want %v", got, tt.want)
+			if got := solution(tt.args.nums, tt.args.k); got != tt.want {
+				t.Errorf("solution() = %v, want %v", got, tt.want)
 			}
 		})
 	}
