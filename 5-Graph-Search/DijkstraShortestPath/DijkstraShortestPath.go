@@ -145,7 +145,7 @@ func (pv *Vertex) CallPath(from, to *Vertex, cost int) int {
 
 	for key, edge := range from.Edges {
 
-		if from.Stack.Contain(DataStructure.NewListItem(key)) {
+		if from.Stack.Contain(DataStructure.NewListItem(key)) || from.Key == key {
 			continue
 		}
 

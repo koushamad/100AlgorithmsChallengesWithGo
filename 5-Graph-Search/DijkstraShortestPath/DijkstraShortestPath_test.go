@@ -11,12 +11,14 @@ func TestVertex_CallPath(t *testing.T) {
 	}
 	type args struct {
 		previousCost int
+		from         string
+		to           string
 	}
 	tests := []struct {
 		name   string
 		fields fields
 		args   args
-		want   map[string]int
+		want   int
 	}{
 		{
 			name: "Case 1",
@@ -35,20 +37,16 @@ func TestVertex_CallPath(t *testing.T) {
 			},
 			args: args{
 				previousCost: 0,
+				from:         "A",
+				to:           "C",
 			},
-			want: map[string]int{
-				"A": 1,
-				"B": 1,
-				"C": 1,
-				"D": 1,
-				"E": 1,
-			},
+			want: 7,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			pv := tt.fields.graph.GetVertex("A")
-			if got := pv.CallPath(pv, tt.fields.graph.GetVertex("C"), tt.args.previousCost); !reflect.DeepEqual(got, tt.want) {
+			pv := tt.fields.graph.GetVertex(tt.args.from)
+			if got := pv.CallPath(pv, tt.fields.graph.GetVertex(tt.args.to), tt.args.previousCost); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("CallPath() = %v, want %v", got, tt.want)
 			}
 		})
